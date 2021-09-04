@@ -10,13 +10,13 @@
     
     <form action="gravar_usuario.php" method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" name="nome">
+        <input type="text" name="nome" required>
 
         <label for="nome">Login:</label>
-        <input type="text" name="login">
+        <input type="text" name="login" required>
 
         <label for="nome">Senha:</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" required>
 
         <input type="submit" value="SALVAR">
     </form>
