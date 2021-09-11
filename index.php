@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/estilo.css" rel="stylesheet">
     <title>Project PHP</title>
 </head>
 <body>
     <?php require_once __DIR__ . "/conexao.php";?>
 
     <h1>Lista de Usuários</h1>
+
+    <div class="resposta">
+        <p class="load"> <img src="img/load.gif" alt="Carregando...">Mensagem</p>
+    </div>
 
     <?php
     
@@ -32,7 +37,11 @@
 
     <hr>
 
-    <h1>Aula do dia 03/09</h1>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/principal.js"></script>
+
+
+    <!-- <h1>Aula do dia 03/09</h1> -->
 
     <?php
 /*

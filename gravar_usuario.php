@@ -1,11 +1,14 @@
 <?php
+
+    sleep(2);
+    
     require __DIR__ . "/admin/crud.php";
 
     $nome = $_POST["nome"];
     $login = $_POST["login"];
     $senha = $_POST["senha"];
-    if($nome == ""){
-        echo "Nome não pode ser Vazio";
+    if($nome == "" || $login == "" || $senha == ""){
+        echo "0";
     }else{
         $dados = [
             "UsuarioNome" => $nome,
@@ -13,10 +16,10 @@
             "UsuarioSenha" => $senha,
         ];
         if(GravarRegistro("Usuarios", $dados)){
-            echo "Cadastro Realizado com Sucesso";
+            echo "1";
         };
     }
-
+    //echo "To perdido";
 
     
 

@@ -1,0 +1,34 @@
+.resposta{
+    display: none;
+}
+
+.resposta p {
+    margin: 10px 0 10px 0;
+    /*border: 1px solid #000;*/
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.resposta .error{
+    color: #900;
+    border: 3px solid #900;
+    background-color: #ffdfdf;
+}
+
+.resposta .success{
+    color: #090;
+    border: 3px solid #090;
+    background-color: #dfffdf;
+}
+
+.resposta .load{
+    color: #009;
+    border: 3px solid #009;
+    background-color: #dfdfff;
+}
+
+.resposta .load img{
+    float: left;
+    width: 18px;
+    margin-right: 5px;
+}
