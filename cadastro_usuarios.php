@@ -27,6 +27,8 @@
         <input type="submit" value="SALVAR" class="btn-usuario">
     </form>
 
+    <div class="modal"></div>
+
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/principal.js"></script>
 

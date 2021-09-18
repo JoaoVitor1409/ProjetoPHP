@@ -19,14 +19,37 @@
 $(document).ready(function(){
     //console.log("Funcionou a instalação.");
 
+    $body = $("body");
+
+    $(document).on({
+        ajaxStart : function(){ $body.addClass("loading"); },
+        ajaxError : function(){ errosend(); },
+        ajaxStop : function(){ $body.removeClass("loading"); }
+    });
+
+    $(document).ajaxError(function(){
+        alert("Erro");
+    });
 
 
     var msg = $(".resposta");
     //msg.hide();  
 
+    function carregando(mensagem = "Por favor espere um momento."){
+        msg.empty().html("<p class='load'><img src='img/load.gif' alt='Carregando...'>"+ mensagem + "</p>").fadeIn("fast");
+    }
 
+    function errosend(){
+        msg.empty().html("<p class='error'><strong>Erro: Por favor, entre em contanto com o suporte</strong></p>").fadeIn("fast");
+    }
 
+    function errodados(mensagem) {
+        msg.empty().html("<p class='error'>"+ mensagem + "</p>").fadeIn("fast");
+    }
 
+    function sucesso(mensagem) {
+        msg.empty().html("<p class='success'>"+ mensagem + "</p>").fadeIn("fast");
+    }
 
 
 
@@ -42,27 +65,36 @@ $(document).ready(function(){
             url: "gravar_usuario.php",
             method: "POST",
             data: dados,
+            dataType: "json", //Está esperando um Json
             beforeSend: function(){
-                msg.html("<p class = 'load'><img src='img/load.gif' alt='Carregando...'> Enviando Dados</p>").show(1000);
+                carregando();
             },
             success: function(result){
                 // console.log("A minha função AJAX funcionou");
-                // console.log(result);
+                //console.log(result);
+                
+                result["codigo"] == 0 ? errodados(result["mensagem"]) : sucesso(result["mensagem"]);
 
-                if(result == 0){
-                    msg.html("<p class = 'error'>Todos os campos são obrigatórios</p>").show(1000, function(){msg.hide(5000)});
+                /*if(result["codigo"] == 0){
+                    errodados(result["mensagem"]);
+                }else if(result["codigo"] == 1){
+                    sucesso(result["mensagem"]);
+                }*/
+
+                /*if(result == 0){
+                    errodados("Campos em Branco!");
                 }else{
-                    msg.html("<p class = 'success'>Cadastro Realizado com successo</p>").show(1000, function(){msg.hide(5000)});
+                    sucesso("Usuário cadastrado com sucesso!");
                     //Primeiro faz o show, depois o hide
-                }               
+                }*/               
                // msg.show(); // Manipula o CSS
             },
             error: function(e){
                 console.log(e.status);
                 if(e.status == 404){
-                    $('body').append("Erro ao encontrar o Arquivo");
+                    errosend();
                 }
-                console.log("Deu ruim na função AJAX");
+                //console.log("Deu ruim na função AJAX");
             }
         });
 

@@ -12,9 +12,7 @@
 
     <h1>Lista de Usuários</h1>
 
-    <div class="resposta">
-        <p class="load"> <img src="img/load.gif" alt="Carregando...">Mensagem</p>
-    </div>
+    <div class="resposta"></div>
 
     <?php
     

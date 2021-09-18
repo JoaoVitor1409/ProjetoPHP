@@ -7,23 +7,29 @@
     $nome = $_POST["nome"];
     $login = $_POST["login"];
     $senha = $_POST["senha"];
-    if($nome == "" || $login == "" || $senha == ""){
-        echo "0";
-    }else{
+    if($nome == ""){
+        $retorno["codigo"] = "0";
+        $retorno["mensagem"] = "Nome não pode ser vazio";
+    }elseif($login == ""){
+        $retorno["codigo"] = "0";
+        $retorno["mensagem"] = "Login não pode ser vazio";
+    }elseif($senha == ""){
+        $retorno["codigo"] = "0";
+        $retorno["mensagem"] = "Senha não pode ser vazia";
+    }    
+    else{
         $dados = [
             "UsuarioNome" => $nome,
             "UsuarioLogin" => $login,
             "UsuarioSenha" => $senha,
         ];
         if(GravarRegistro("Usuarios", $dados)){
-            echo "1";
+            $retorno["codigo"] = "1";
+            $retorno["mensagem"] = "Usuário cadastrado com sucesso";
         };
-    }
-    //echo "To perdido";
+    }   
 
-    
-
-
+    echo json_encode($retorno);
 
 
     /*
