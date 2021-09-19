@@ -8,7 +8,8 @@
     <title>Project PHP</title>
 </head>
 <body>
-    <?php require_once __DIR__ . "/conexao.php";?>
+    <?php require_once __DIR__ . "/admin/crud.php";?>
+    <?php /*require_once __DIR__ . "/conexao.php"*/?>
 
     <h1>Lista de Usuários</h1>
 
@@ -16,16 +17,35 @@
 
     <?php
     
-        $sql = "SELECT * FROM Usuarios";
+        // O que o professor tinha feito sem o LerRegistro
+
+        /*$sql = "SELECT * FROM Usuarios";
 
         $result = mysqli_query($conexao, $sql);
-        //var_dump($result);
-        //echo $result->num_rows;
-        //$item = mysqli_fetch_array($result);
-        //var_dump($item);
+
+        var_dump($result);
+        echo $result->num_rows;
+        $item = mysqli_fetch_array($result);
+        var_dump($item);
 
         while($item = mysqli_fetch_array($result)){
                 echo "<p> Nome: " . $item['UsuarioNome'] . " - Login: " . $item['UsuarioLogin'] . "</p>";
+        }*/
+
+
+
+
+        // João que fez utilizando o LerRegistro
+        
+        $dados[] = LerRegistro("Usuarios","UsuarioNome, UsuarioLogin");
+
+        var_dump($dados);
+
+        foreach($dados as $usuario){
+            //echo "{$usuario[0]['UsuarioNome']}";
+            foreach($usuario as $item){
+                echo "<p> Nome: " . $item['UsuarioNome'] . " - Login: " . $item['UsuarioLogin'] . "</p>";
+            }
         }
 
     ?>
